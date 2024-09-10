@@ -1,12 +1,12 @@
 var params = {
-	scalex: hl.randomInt(5, 20),
-    scaley: hl.randomInt(5, 20),
-    speed: hl.randomInt(10, 15),
-	spacing: hl.randomInt(20, 40)
+	scalex: Math.floor(Math.random()*10),
+    scaley: Math.floor(Math.random()*10),
+    speed: Math.floor(Math.random()*10),
+	spacing: Math.floor(Math.random()*40)
 }
 
 var modes = [{type: "mix", amount: 6}, {type: "squares", amount: 6}, {type: "stripes", amount: 6}, {type: "triangles", amount: 8}, {type: "circles", amount: 4}];
-var mode = hl.randomElement(modes);
+var mode = Math.random(modes);
 var seed = 0;
 var bgcolor = '#111';
 //var grid = [];
@@ -35,7 +35,7 @@ const sketch = (p) => {
         var w = p.min(p.windowWidth, p.windowHeight)
         p.createCanvas(w, w);
         params.spacing = w/params.spacing;
-        seed = hl.random(1000);
+        seed = p.random(1000);
         p.noiseSeed(seed);
         pane.addBinding( params, 'scalex', { min: 1, max: 30 });
         pane.addBinding( params, 'scaley', { min: 1, max: 30 });
@@ -47,7 +47,6 @@ const sketch = (p) => {
         mode = type.value;
         p.background(param.bgColor);
         create();
-        hl.token.capturePreview();
     };
     
     const create = () => {
